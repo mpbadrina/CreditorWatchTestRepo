@@ -11,30 +11,29 @@ import com.google.gson.JsonArray;
 import com.selenium.app.CreditorWatchApp;
 
 public class ArticlePage extends AbstractPage {
-    private static final Logger log = LogManager.getLogger("CategoryPage");
-    
-    public ArticlePage(CreditorWatchApp app) {
-    	this.app = app;
-    	waitUntilPageRefreshed();
-    }
-    
-    public JsonArray getAnchorTagsText(){
-    	
-    	log.info("Get Anchor Tags Text from article");
-    	
-    	WebElement webElement = getDriver().findElement(By.className("entry-content"));
-    	List<WebElement> tags = webElement.findElements(By.tagName("a"));
-    	
-    	JsonArray jsonTags = new JsonArray();
-        
-    	for(WebElement tag : tags) {
-    		if(!tag.getText().isEmpty()) {
-        		jsonTags.add(tag.getText());
-    		}
-    	}
-    	
-    	return jsonTags;
-    }
+	private static final Logger log = LogManager.getLogger("CategoryPage");
+
+	public ArticlePage(CreditorWatchApp app) {
+		this.app = app;
+	}
+
+	public JsonArray getAnchorTagsText() {
+
+		log.info("Get Anchor Tags Text from article");
+
+		WebElement webElement = getDriver().findElement(By.className("entry-content"));
+		List<WebElement> tags = webElement.findElements(By.tagName("a"));
+
+		JsonArray jsonTags = new JsonArray();
+
+		for (WebElement tag : tags) {
+			if (!tag.getText().isEmpty()) {
+				jsonTags.add(tag.getText());
+			}
+		}
+
+		return jsonTags;
+	}
 
 	@Override
 	public boolean isPageOpen() {

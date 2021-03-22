@@ -21,6 +21,7 @@ public class AnchorTagTest extends CreditorWatchTestBase {
 
 	@Test
 	public void validateAnchorTagsInArticle() {
+
 		HomePage homePage = new HomePage(app);
 		AssertJUnit.assertEquals("Wrong Home Page Title", "Business Credit Scores and Company Checks | CreditorWatch",
 				app.getPageTitle());
